@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - API_KEY=6n6eFIXRMC2XGiwB6_9h
+      - API_KEY=<YOUR_API_KEY_HERE>
       - MONGO_URI=mongodb://mongo:27017/cinematic_db
     depends_on:
       - mongo
