@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  backend-flask:
+    build: .
+    container_name: backend-flask
+    ports:
+      - "5000:5000"
+    environment:
+      - API_KEY=6n6eFIXRMC2XGiwB6_9h
+      - MONGO_URI=mongodb://mongo:27017/cinematic_db
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+
+  mongo:
+    image: mongo:latest
+    container_name: cinematic-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    command: bash -c 'rm -f /data/db/mongod.lock && mongod --bind_ip_all'
+
+volumes:
+  mongo_data:
+
